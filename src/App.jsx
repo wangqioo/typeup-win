@@ -79,6 +79,7 @@ const COPY = {
     pollOrder: "刷新订单",
     orderStatus: "订单状态",
     authHint: "登录后会自动把本地引擎切到后端代理，无需在本机保存模型 Key。",
+    registerTrialHint: "注册成功后自动获得 free_trial 免费权益：30 天、600 分钟语音额度、3000 次 AI 请求额度。",
     settings: "配置",
     speechModel: "语音与模型",
     process: "进程",
@@ -181,6 +182,7 @@ const COPY = {
     pollOrder: "Refresh Order",
     orderStatus: "Order Status",
     authHint: "After login, the local engine uses the backend proxy. No model keys need to be stored locally.",
+    registerTrialHint: "New accounts automatically receive the free_trial plan: 30 days, 600 STT minutes, and 3000 AI requests.",
     settings: "Settings",
     speechModel: "Speech and Models",
     process: "Process",
@@ -1109,7 +1111,7 @@ function AccountPanel({
             type="password"
             onChange={(value) => setAuthForm((current) => ({ ...current, password: value }))}
           />
-          <p className="account-hint">{text.authHint}</p>
+          <p className="account-hint">{authForm.mode === "register" ? text.registerTrialHint : text.authHint}</p>
           <button className="save-button" type="submit" disabled={Boolean(accountBusy)}>
             <LogIn size={18} />
             {accountBusy ? text.saving : authForm.mode === "register" ? text.register : text.login}
